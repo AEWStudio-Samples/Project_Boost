@@ -120,13 +120,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!108 &705507994 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 4939746881097053109, guid: ff510eff32df4bf418d65e5d7466e21d,
-    type: 3}
-  m_PrefabInstance: {fileID: 4939746881802535215}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &1210272995
+--- !u!1001 &330186704
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -137,6 +131,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rocket Mk1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8321202821511099310, guid: 5bc72831a8986cb4ebd9e3cd2f58eeca,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8321202821511099310, guid: 5bc72831a8986cb4ebd9e3cd2f58eeca,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.4398518
+      objectReference: {fileID: 0}
+    - target: {fileID: 8321202821511099310, guid: 5bc72831a8986cb4ebd9e3cd2f58eeca,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8321202821511099310, guid: 5bc72831a8986cb4ebd9e3cd2f58eeca,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8321202821511099310, guid: 5bc72831a8986cb4ebd9e3cd2f58eeca,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8321202821511099310, guid: 5bc72831a8986cb4ebd9e3cd2f58eeca,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8321202821511099310, guid: 5bc72831a8986cb4ebd9e3cd2f58eeca,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8321202821511099310, guid: 5bc72831a8986cb4ebd9e3cd2f58eeca,
         type: 3}
@@ -160,6 +189,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bc72831a8986cb4ebd9e3cd2f58eeca, type: 3}
+--- !u!108 &705507994 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 4939746881097053109, guid: ff510eff32df4bf418d65e5d7466e21d,
+    type: 3}
+  m_PrefabInstance: {fileID: 4939746881802535215}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2615801795860977436
 PrefabInstance:
   m_ObjectHideFlags: 0

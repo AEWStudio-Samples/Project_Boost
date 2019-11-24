@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Rocket : MonoBehaviour
@@ -20,6 +21,9 @@ public class Rocket : MonoBehaviour
     [SerializeField] ParticleSystem clearLevelVFX;
     [SerializeField] ParticleSystem deathVFX;
 
+    [Header("Lighting")]
+    [SerializeField] Light thrusterGlow;
+
     // State Vars
     Rigidbody rigidBody;
     AudioSource audioSource;
@@ -28,12 +32,15 @@ public class Rocket : MonoBehaviour
     enum State { Alive, Dying, Transcending}
     State state = State.Alive;
 
+    bool collisionsDisabled = false;
+
     // Start is called before the first frame update
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
         curLevelIndex = SceneManager.GetActiveScene().buildIndex;
+        thrusterGlow.enabled = false;
     }
 
     // Update is called once per frame
@@ -44,6 +51,14 @@ public class Rocket : MonoBehaviour
             RespondToThrustInput();
             RespondToRotationInput();
         }
+        if (Debug.isDebugBuild) RespondToDebugKeys();
+    }
+
+    private void RespondToDebugKeys()
+    {
+        if (Input.GetKeyDown(KeyCode.L)) LoadNextLevel();
+        if (Input.GetKeyDown(KeyCode.R)) LoadFirstLevel();
+        if (Input.GetKeyDown(KeyCode.C)) collisionsDisabled = !collisionsDisabled;
     }
 
     private void RespondToThrustInput()
@@ -53,7 +68,9 @@ public class Rocket : MonoBehaviour
         {
             if (audioSource) audioSource.Stop();
             mainEngineVFX.Stop();
+            thrusterGlow.enabled = false;
         }
+        
     }
 
     private void ApplyThrust()
@@ -61,6 +78,7 @@ public class Rocket : MonoBehaviour
         rigidBody.AddRelativeForce(Vector3.up * mainThrust);
         if (audioSource && !audioSource.isPlaying) audioSource.PlayOneShot(mainEngine);
         mainEngineVFX.Play();
+        thrusterGlow.enabled = !thrusterGlow.enabled;
     }
 
     private void RespondToRotationInput()
@@ -85,7 +103,7 @@ public class Rocket : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (state != State.Alive) return; // Ignore collision when dead or transcending
+        if (state != State.Alive || collisionsDisabled) return; // Ignore collision when dead or transcending
         if (audioSource) audioSource.Stop();
         mainEngineVFX.Stop();
 
